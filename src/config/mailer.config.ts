@@ -19,12 +19,12 @@ export class MailerService {
 
   async sendApprovalEmail(email: string, username: string) {
     await this.transporter.sendMail({
-      from: '"Owner" dhfaisweet@gmail.com',
+      from: '"dhfai" dhfaisweet@gmail.com',
       to: email,
-      subject: 'Akunmu telah di terima oleh Owner!',
+      subject: 'Akunmu telah di terima/di setujuai!',
       html: `
-        <h3>Akunmu telah di terima oleh Owner!</h3>
-        <p>Silahkan login menggunakan username berikut:</p>
+        <h3>Selamat, akunmu telah di setujui silahkan menikmati layanan kami dan terima kasih telah bergabung🥳!</h3>
+        <p>Silahkan login menggunakan username :</p>
         <ul>
           <li><b>Username:</b> ${username}</li>
         </ul>

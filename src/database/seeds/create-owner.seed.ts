@@ -23,12 +23,12 @@ export class CreateOwnerSeed {
         return;
       }
 
-      const hashedPassword = await bcrypt.hash('ownerpassword', 10);
+      const hashedPassword = await bcrypt.hash('dhfaisweet', 10);
 
       const owner = userRepository.create({
         email: 'dhfaisweet@gmail.com',
         password: hashedPassword,
-        username: 'owneradmin',
+        username: 'dhfai',
         role: UserRole.OWNER,
         status: UserStatus.APPROVED,
       });
@@ -39,7 +39,7 @@ export class CreateOwnerSeed {
         firstName: 'Admin',
         lastName: 'Owner',
         bio: 'Pemilik sistem',
-        phone: '081234567890',
+        phone: '085757562962',
         avatar: 'https://i.pravatar.cc/150?img=1',
       });
 

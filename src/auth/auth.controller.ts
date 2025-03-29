@@ -1,8 +1,9 @@
-import { Controller, Post, Body, UseGuards, Request } from '@nestjs/common';
+import { Controller, Post, Body, UseGuards, Request, Get, Req } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { RegisterDto } from './dtos/register.dto';
 import { LoginDto } from './dtos/login.dto';
 import { JwtAuthGuard } from '../common/guards/jwt-auth.guard';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('auth')
 export class AuthController {
@@ -18,9 +19,9 @@ export class AuthController {
     return this.authService.login(body.username, body.password);
   }
 
-  @Post('me')
-  @UseGuards(JwtAuthGuard)
-  me(@Request() req) {
-    return req.user;
+  @UseGuards(AuthGuard("jwt")) // Proteksi dengan JWT
+  @Get("me")
+  getProfile(@Req() req) {
+    return req.user; // Mengembalikan data user dari token
   }
 }

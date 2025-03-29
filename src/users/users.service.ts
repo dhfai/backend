@@ -38,6 +38,15 @@ export class UsersService {
     return { message: 'User approved successfully' };
   }
 
+  // rejectUser method
+  async rejectUser(id: string) {
+    const user = await this.userRepository.findOne({ where: { id } });
+    if (!user) throw new NotFoundException('User not found');
+    user.status = UserStatus.REJECTED;
+    await this.userRepository.save(user);
+    return { message: 'User rejected successfully' };
+  }
+
   async deleteUser(id: string) {
     const result = await this.userRepository.delete(id);
     if (result.affected === 0) throw new NotFoundException('User not found');

@@ -30,6 +30,13 @@ export class UsersController {
     return this.usersService.approveUser(id);
   }
 
+  @Post('reject/:id')
+  @UseGuards(JwtAuthGuard, RoleGuard)
+  @Role(UserRole.OWNER)
+  rejectUser(@Param('id') id: string) {
+    return this.usersService.rejectUser(id);
+  }
+
   @Delete(':id')
   @UseGuards(JwtAuthGuard, RoleGuard)
   @Role(UserRole.OWNER)
