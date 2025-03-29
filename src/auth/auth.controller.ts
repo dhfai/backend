@@ -19,9 +19,9 @@ export class AuthController {
     return this.authService.login(body.username, body.password);
   }
 
-  @UseGuards(AuthGuard("jwt")) // Proteksi dengan JWT
+  @UseGuards(AuthGuard("jwt"))
   @Get("me")
   getProfile(@Req() req) {
-    return req.user; // Mengembalikan data user dari token
+    return req.user;
   }
 }
